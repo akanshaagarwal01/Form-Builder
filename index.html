@@ -1,0 +1,100 @@
+<html>
+
+<head>
+    <title>Form Builder</title>
+</head>
+
+<body>
+    <div id="formContainer"></div>
+    <script src="formElement.js"></script>
+    <script src="formBuilder.js"></script>
+    <script>
+        let formArguments = [
+            {
+                type: "text",
+                name: "firstName",
+                label: "FirstName",
+                placeholder: "John",
+                required: true,
+                category: "Personal Information"
+            },
+            {
+                type: "text",
+                name: "lastName",
+                label: "LastName",
+                placeholder: "Doe",
+                category: "Personal Information"
+            },
+            {
+                type: "text",
+                name: "age",
+                label: "Age",
+                category: "Personal Information",
+                validation: validateAge
+            },
+            {
+                type: "select",
+                name: "nationality",
+                label: "Nationality",
+                options: ["American", "Australian", "Canadian", "Indian", "German", "Spanish"],
+                selected: "Indian",
+                category: "Personal Information"
+            },
+
+            {
+                type: "text",
+                name: "favSport",
+                label: "Favourire Sport"
+            },
+
+            {
+                type: "text",
+                name: "flatNum",
+                label: "Flat Number",
+                category: "Address Details"
+            },
+            {
+                type: "text",
+                name: "street",
+                label: "Street",
+                size: "80",
+                category: "Address Details"
+            },
+            {
+                type: "text",
+                name: "city",
+                label: "City",
+                category: "Address Details"
+            },
+            {
+                type: "text",
+                name: "state",
+                label: "State",
+                category: "Address Details"
+            },
+            {
+                type: "submit",
+                name: "submit",
+                value: "Submit Me!",
+                action: validateData
+            }
+        ];
+
+        function validateAge() {
+            if (this.value < 18 || this.value > 60) {
+                console.log("Ineligible");
+            }
+            else {
+                console.log("Good to go !!")
+            }
+        }
+
+        function validateData() {
+            console.log("Data Validated !!");
+        }
+        let formContainer = document.getElementById("formContainer");
+        let form = new FormBuilder(formContainer, formArguments);
+    </script>
+</body>
+
+</html>
