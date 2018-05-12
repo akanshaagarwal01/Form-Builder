@@ -2,10 +2,12 @@
 
 <head>
     <title>Form Builder</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
     <div id="formContainer"></div>
+    <div id="formResults"></div>
     <script src="formElement.js"></script>
     <script src="formBuilder.js"></script>
     <script>
@@ -26,11 +28,10 @@
                 category: "Personal Information"
             },
             {
-                type: "text",
+                type: "number",
                 name: "age",
                 label: "Age",
                 category: "Personal Information",
-                validation: validateAge
             },
             {
                 type: "select",
@@ -39,12 +40,6 @@
                 options: ["American", "Australian", "Canadian", "Indian", "German", "Spanish"],
                 selected: "Indian",
                 category: "Personal Information"
-            },
-
-            {
-                type: "text",
-                name: "favSport",
-                label: "Favourire Sport"
             },
 
             {
@@ -76,13 +71,12 @@
                 type: "submit",
                 name: "submit",
                 value: "Submit Me!",
-                action: validateData
             }
         ];
 
         function validateAge() {
             if (this.value < 18 || this.value > 60) {
-                console.log("Ineligible");
+                alert.log("Ineligible");
             }
             else {
                 console.log("Good to go !!")
@@ -93,7 +87,8 @@
             console.log("Data Validated !!");
         }
         let formContainer = document.getElementById("formContainer");
-        let form = new FormBuilder(formContainer, formArguments);
+        let formResults = document.getElementById("formResults");
+        let form = new FormBuilder(formContainer, formResults, formArguments);
     </script>
 </body>
 
